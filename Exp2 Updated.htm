@@ -138,47 +138,191 @@
     </section>
 
     <!-- HTML5 Form Section -->
-<section id="form">
-    <h2>Get In Touch</h2>
-    <form action="/action_page.php" method="post">
+<body>
+    
+    <div>
+        <h1>Online Registration Form</h1>
+        <h2>Web Technology Lab - Exercise 2</h2>
+        <p><em>Please fill out all required fields to complete your registration</em></p>
+    </div>
+
+    <!-- Single form element with required attributes -->
+    <form action="/serverlogic" method="post" enctype="multipart/form-data">
+        
+        <!-- Personal Information Fieldset -->
         <fieldset>
             <legend>Personal Information</legend>
-            <label for="fname">First Name:</label>
-            <input type="text" id="fname" name="fname" required><br><br>
-
-            <label for="lname">Last Name:</label>
-            <input type="text" id="lname" name="lname" required><br><br>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email"><br><br>
-
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob"><br><br>
-
-            <label for="language">Preferred Language:</label>
-            <select id="language" name="language">
-                <option value="english">English</option>
-                <option value="tamil">Tamil</option>
-                <option value="hindi">Hindi</option>
-            </select><br><br>
-
-            <label for="resume">Upload Resume:</label>
-            <input type="file" id="resume" name="resume"><br><br>
-
-            <label>Gender:</label>
-            <input type="radio" id="male" name="gender" value="male">
-            <label for="male">Male</label>
-            <input type="radio" id="female" name="gender" value="female">
-            <label for="female">Female</label><br><br>
-
-            <label for="bio">Short Bio:</label><br>
-            <textarea id="bio" name="bio" rows="4" cols="50"></textarea><br><br>
-
-            <input type="submit" value="Submit">
-            <input type="reset" value="Reset">
+            
+            <div>
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" 
+                       required maxlength="50" autofocus>
+            </div>
+            
+            <div>
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" 
+                       required maxlength="50">
+            </div>
+            
+            <div>
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+            </div>
+            
+            <div>
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" placeholder="+1-234-567-8900" 
+                       pattern="[+]?[0-9\s\-()]{10,15}" required>
+            </div>
+            
+            <div>
+                <label for="birthDate">Date of Birth *</label>
+                <input type="date" id="birthDate" name="birthDate" required 
+                       min="1920-01-01" max="2010-12-31">
+            </div>
+            
+            <div>
+                <label for="age">Age *</label>
+                <input type="number" id="age" name="age" placeholder="Enter your age" 
+                       required min="13" max="120">
+            </div>
+            
+            <div>
+                <label>Gender *</label>
+                <div>
+                    <input type="radio" id="male" name="gender" value="male" required>
+                    <label for="male">Male</label>
+                    
+                    <input type="radio" id="female" name="gender" value="female" required>
+                    <label for="female">Female</label>
+                    
+                    <input type="radio" id="other" name="gender" value="other" required>
+                    <label for="other">Other</label>
+                </div>
+            </div>
         </fieldset>
+        
+        <!-- Account Information Fieldset -->
+        <fieldset>
+            <legend>Account Information</legend>
+            
+            <div>
+                <label for="username">Username *</label>
+                <input type="text" id="username" name="username" placeholder="Choose a username" 
+                       required minlength="3" maxlength="20" pattern="[a-zA-Z0-9_]+">
+            </div>
+            
+            <div>
+                <label for="password">Password *</label>
+                <input type="password" id="password" name="password" placeholder="Create a strong password" 
+                       required minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+            </div>
+            
+            <div>
+                <label for="website">Personal Website</label>
+                <input type="url" id="website" name="website" placeholder="https://yourwebsite.com">
+            </div>
+            
+            <div>
+                <label for="searchTerm">How did you find us?</label>
+                <input type="search" id="searchTerm" name="searchTerm" placeholder="Search engine, social media, etc.">
+            </div>
+        </fieldset>
+        
+        <!-- Additional Information Fieldset -->
+        <fieldset>
+            <legend>Additional Information</legend>
+            
+            <div>
+                <label for="country">Country *</label>
+                <select id="country" name="country" required>
+                    <option value="">-- Select your country --</option>
+                    <option value="us">United States</option>
+                    <option value="ca">Canada</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="in">India</option>
+                    <option value="au">Australia</option>
+                    <option value="de">Germany</option>
+                    <option value="fr">France</option>
+                    <option value="jp">Japan</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div>
+                <label>Interests (Select all that apply) *</label>
+                <div>
+                    <input type="checkbox" id="technology" name="interest1" value="technology" required>
+                    <label for="technology">Technology</label>
+                    
+                    <input type="checkbox" id="sports" name="interest2" value="sports">
+                    <label for="sports">Sports</label>
+                    
+                    <input type="checkbox" id="music" name="interest3" value="music">
+                    <label for="music">Music</label>
+                    
+                    <input type="checkbox" id="travel" name="interest4" value="travel">
+                    <label for="travel">Travel</label>
+                    
+                    <input type="checkbox" id="reading" name="interest5" value="reading">
+                    <label for="reading">Reading</label>
+                    
+                    <input type="checkbox" id="cooking" name="interest6" value="cooking">
+                    <label for="cooking">Cooking</label>
+                </div>
+            </div>
+            
+            <div>
+                <label for="bio">Tell us about yourself</label>
+                <textarea id="bio" name="bio" rows="5" cols="50" 
+                          placeholder="Share something interesting about yourself, your hobbies, goals, or anything you'd like us to know..."></textarea>
+            </div>
+            
+            <div>
+                <label for="resume">Upload Resume/CV</label>
+                <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx">
+            </div>
+        </fieldset>
+        
+        <!-- Skills Progress Section -->
+        <fieldset>
+            <legend>Skills Assessment</legend>
+            
+            <div>
+                <label for="htmlSkill">HTML/CSS Proficiency</label>
+                <progress id="htmlSkill" value="75" max="100">75%</progress>
+            </div>
+            
+            <div>
+                <label for="jsSkill">JavaScript Knowledge</label>
+                <progress id="jsSkill" value="60" max="100">60%</progress>
+            </div>
+            
+            <div>
+                <label for="programmingSkill">Overall Programming Experience</label>
+                <progress id="programmingSkill" value="80" max="100">80%</progress>
+            </div>
+        </fieldset>
+        
+        <!-- Form Submission Buttons -->
+        <div>
+            <input type="submit" value="Register Now">
+            <input type="reset" value="Clear Form">
+        </div>
+        
     </form>
-</section>
+    
+    <!-- Additional content outside form -->
+    <div>
+        <h3>Registration Progress</h3>
+        <progress value="0" max="100" id="formProgress">0%</progress>
+        <p>Complete the form to see your progress</p>
+    </div>
+    
+
+    
+</body>
 
 <!-- Media Section -->
 <section id="media">
